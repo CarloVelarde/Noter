@@ -13,5 +13,10 @@
     "content": "Day in the life",
     "created_at": "2025-09-05 17:13:58 -0500",
     "complete_by": "Friday"
+  },
+  {
+    "content": "Refactor into different files",
+    "created_at": "2025-09-12 22:36:45 -0500",
+    "complete_by": "Friday 9/12/2025"
   }
 ]
