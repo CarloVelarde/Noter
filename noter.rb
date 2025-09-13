@@ -14,6 +14,7 @@ global_parser = OptionParser.new do |o|
     Usage guide:
       noter add    [options] "NOTE TEXT"   # add a note
       noter list   [options]               # list notes
+      noter delete [options] ID            # delete a note
 
     Global options:
   HEREDOC
@@ -49,6 +50,32 @@ when "add"
   # Practicing ternary (if complete_by was given then print it, else print nothing)
   puts "Added: #{note_text}#{options["complete_by"] ? " (due #{options["complete_by"]})" : ""}"
 
+when "delete"
+  delete_parser = OptionParser.new do |o|
+    o.banner = "Usage: noter delete [--path FILE] ID"
+
+    o.on("-p", "--path FILE", "Path to JSON file") {|v| global["path"] = v }
+    o.on("-h", "--help") { puts o; exit }
+  end
+
+  # Removes known options and leaves positional arguments (the id in this case)
+  delete_parser.parse!(ARGV)
+
+  # Get the ID from the argument list
+  id = ARGV.first
+  if id.nil?
+    warn "Error: NOTE ID required.\n\n#{delete_parser}"
+    exit 1
+  end
+
+  tool = Tool.new(global["path"])
+  if tool.delete_note(id)
+    puts "Deleted note with ID: #{id}"
+  else
+    puts "No note found with ID: #{id}"
+    exit 1
+  end
+
 when "list"
   options = {"time_created" => false}
   list_parser = OptionParser.new do |o|
@@ -72,7 +99,7 @@ when "list"
   notes.sort_by! {|note| note.created_at} if options["time_created"]
 
   notes.each.with_index do |note, i|
-    puts "#{i + 1}. #{note.content}. Due by #{note.complete_by ? note.complete_by : ""}"
+    puts "#{i + 1}. (#{note.id}) #{note.content}. Due by- #{note.complete_by != nil ? note.complete_by : "N/A"}"
   end
 else
   puts global_parser

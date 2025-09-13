@@ -1,22 +1,14 @@
 [
   {
-    "content": "Submit homework 2",
-    "created_at": "2025-09-04 14:29:01 -0500",
-    "complete_by": "Wednesday 9/11/2025"
+    "id": "dfcfe53a-1ce7-40fb-8029-6fc8db0ff3bc",
+    "content": "Add delete method to note app",
+    "created_at": "2025-09-12 23:54:11 -0500",
+    "complete_by": "Monday 9/15/2025"
   },
   {
-    "content": "Submit homework 1",
-    "created_at": "2025-09-04 14:34:03 -0500",
-    "complete_by": "Tuesday 9/10/2025"
-  },
-  {
-    "content": "Day in the life",
-    "created_at": "2025-09-05 17:13:58 -0500",
-    "complete_by": "Friday"
-  },
-  {
-    "content": "Refactor into different files",
-    "created_at": "2025-09-12 22:36:45 -0500",
-    "complete_by": "Friday 9/12/2025"
+    "id": "677758c4-33e4-4e2b-9025-3e8669b81a52",
+    "content": "Update readme to show progress",
+    "created_at": "2025-09-13 00:09:12 -0500",
+    "complete_by": null
   }
 ]
